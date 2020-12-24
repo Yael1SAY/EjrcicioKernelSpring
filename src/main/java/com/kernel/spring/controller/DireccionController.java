@@ -1,6 +1,6 @@
 package com.kernel.spring.controller;
 
-import com.kernel.spring.model.Cliente;
+import com.kernel.spring.dto.ClienteDTO;
 import com.kernel.spring.model.Direccion;
 import com.kernel.spring.service.DireccionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("direc")
+@RequestMapping("direccion")
 public class DireccionController {
 
     @Autowired
@@ -17,9 +17,10 @@ public class DireccionController {
 
     //Trae Todos los usuarios
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    List<Direccion> ObtenerDirecciones(){
+    List<ClienteDTO> ObtenerDirecciones(){
         return direccionService.ObtenerDirecciones();
     }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     Direccion ObtenerDireccionId(@PathVariable long id){
         return direccionService.ObtenerDireccionId(id);

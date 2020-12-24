@@ -1,16 +1,14 @@
 package com.kernel.spring.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Clientes")
+@Table(name = "clientes")
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCliente", updatable = false, nullable = false)
+    @Column(name = "id_cliente", updatable = false, nullable = false)
     private long idCliente;
 
     @Column(name = "nombre")
@@ -19,7 +17,7 @@ public class Cliente {
     @Column(name = "apellido ")
     private String apellido;
 
-    @JsonIgnore
+    // @JsonIgnore
     @Column(name = "contrasenia")
     private String contrasenia;
 
@@ -63,5 +61,15 @@ public class Cliente {
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "idCliente=" + idCliente +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", contrasenia='" + contrasenia + '\'' +
+                '}';
     }
 }

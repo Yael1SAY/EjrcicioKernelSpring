@@ -1,23 +1,25 @@
 package com.kernel.spring.model;
 
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Direcciones")
+@Table(name = "direcciones")
 public class Direccion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idDireccion", updatable = false, nullable = false)
+    @Column(name = "id_direccion", updatable = false, nullable = false)
     private long idDireccion;
 
     @Column(name = "calle")
     private String calle;
 
-    @Column(name = "noExteriro")
+    @Column(name = "no_exterior")
     private int noExterior;
 
-    @Column(name = "codPostal")
+    @Column(name = "cod_postal")
     private int codPostal;
 
     @Column(name = "estado")
@@ -26,9 +28,11 @@ public class Direccion {
     @Column(name = "referencia")
     private String referencia;
 
-    
+    //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_cliente")
+    //@JsonIdentityReference(alwaysAsId = true)
+    //@JsonProperty("idCliente")
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idCliente")
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
     public Direccion() {

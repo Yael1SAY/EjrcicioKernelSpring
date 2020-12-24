@@ -1,39 +1,59 @@
 
 package com.kernel.spring.service;
 
-import com.kernel.spring.dao.ClienteDAO;
+import com.kernel.spring.dao.IClienteDAO;
+import com.kernel.spring.dao.IDireccionDAO;
+import com.kernel.spring.dto.ClienteDTO;
 import com.kernel.spring.model.Cliente;
+import com.kernel.spring.model.Direccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+/*
+* En esta capa se agrega la logica de negocio
+* */
 
 @Service
 public class ClienteService {
 
-    @Autowired
-    ClienteDAO clienteDao;
+    private static final Logger LOG = Logger.getLogger(ClienteService.class.getName());
 
-    public List<Cliente> ObtenerClientes(){
-        return clienteDao.ObtenerClientes();
+    @Autowired
+    IClienteDAO IClienteDao;
+    @Autowired
+    IDireccionDAO IDireccionDao;
+
+    public List<ClienteDTO> ObtenerClientes(){
+        List<ClienteDTO> listDto = IClienteDao.ObtenerClientes();
+        LOG.info("Service Lista Clientes: " + listDto);
+        return listDto;
     }
 
-    public Cliente ObtenerClienteId(long id){
-        return clienteDao.ObtenerClienteId(id);
+    public ClienteDTO ObtenerClienteId(long id){
+        ClienteDTO clienteDto;
+        Cliente cliente = IClienteDao.ObtenerClienteId(id);
+        LOG.info("Service Cliente: " + cliente);
+        Direccion direccion = IDireccionDao.ObtenerDireccionId(id);
+
+        clienteDto = new ClienteDTO();
+        clienteDto.setNombre(cliente.getNombre());
+        clienteDto.setApellido(cliente.getApellido());
+        LOG.info("Service Cliente DTO: " + clienteDto);
+        return clienteDto;
     }
 
     public Cliente RegistrarCliente(Cliente cliente){
-        return clienteDao.RegistrarCliente(cliente);
+        return IClienteDao.RegistrarCliente(cliente);
     }
 
-    public Cliente ActualizarCliente(@RequestBody Cliente cliente){
-        return clienteDao.ActualizarCliente(cliente);
+    public Cliente ActualizarCliente(Cliente cliente){
+        return IClienteDao.ActualizarCliente(cliente);
     }
 
-    public void EliminarCliente(@PathVariable long id){
-        clienteDao.EliminarCliente(id);
+    public void EliminarCliente(long id){
+        IClienteDao.EliminarCliente(id);
     }
 }

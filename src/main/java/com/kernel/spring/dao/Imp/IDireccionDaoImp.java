@@ -1,7 +1,7 @@
 package com.kernel.spring.dao.Imp;
 
-import com.kernel.spring.dao.DireccionDAO;
-import com.kernel.spring.model.Cliente;
+import com.kernel.spring.dao.IDireccionDAO;
+import com.kernel.spring.dto.ClienteDTO;
 import com.kernel.spring.model.Direccion;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,16 +12,16 @@ import java.util.List;
 
 @Transactional
 @Repository
-public class DireccionDaoImp implements DireccionDAO {
+public class IDireccionDaoImp implements IDireccionDAO {
 
     @PersistenceContext
     EntityManager entityManager;
 
     @Transactional
     @Override
-    public List<Direccion> ObtenerDirecciones() {
-        String hql = "From Direccion as d";
-        return (List<Direccion>) entityManager.createQuery(hql).getResultList();
+    public List<ClienteDTO> ObtenerDirecciones() {
+        String hql = "From Cliente, Direccion";
+        return (List<ClienteDTO>) entityManager.createQuery(hql).getResultList();
     }
 
     @Transactional
