@@ -3,7 +3,7 @@ package com.kernel.spring.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Direcciones")
+@Table(name = "direcciones")
 public class Direccion {
 
     @Id
@@ -14,7 +14,7 @@ public class Direccion {
     @Column(name = "calle")
     private String calle;
 
-    @Column(name = "noExteriro")
+    @Column(name = "noExterior")
     private int noExterior;
 
     @Column(name = "codPostal")
