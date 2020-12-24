@@ -1,7 +1,6 @@
 package com.kernel.spring.dao.Imp;
 
-import com.kernel.spring.dao.DireccionDAO;
-import com.kernel.spring.model.Cliente;
+import com.kernel.spring.dao.IDireccionDAO;
 import com.kernel.spring.model.Direccion;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +11,7 @@ import java.util.List;
 
 @Transactional
 @Repository
-public class DireccionDaoImp implements DireccionDAO {
+public class DireccionDaoImp implements IDireccionDAO {
 
     @PersistenceContext
     EntityManager entityManager;

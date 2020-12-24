@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-public interface DireccionDAO {
+public interface IDireccionDAO {
 
     List<Direccion> ObtenerDirecciones();
 

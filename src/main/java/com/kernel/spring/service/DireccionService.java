@@ -1,6 +1,6 @@
 package com.kernel.spring.service;
 
-import com.kernel.spring.dao.DireccionDAO;
+import com.kernel.spring.dao.IDireccionDAO;
 import com.kernel.spring.model.Direccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,25 +13,25 @@ import java.util.List;
 public class DireccionService {
 
     @Autowired
-    DireccionDAO direccionDao;
+    IDireccionDAO IDireccionDao;
 
     public List<Direccion> ObtenerDirecciones(){
-        return direccionDao.ObtenerDirecciones();
+        return IDireccionDao.ObtenerDirecciones();
     }
 
     public Direccion ObtenerDireccionId(long id){
-        return direccionDao.ObtenerDireccionId(id);
+        return IDireccionDao.ObtenerDireccionId(id);
     }
 
     public Direccion RegistrarDireccion(Direccion direccion){
-        return direccionDao.RegistrarDireccion(direccion);
+        return IDireccionDao.RegistrarDireccion(direccion);
     }
 
     public Direccion ActualizarDireccion(@RequestBody Direccion direccion){
-        return direccionDao.ActualizarDireccion(direccion);
+        return IDireccionDao.ActualizarDireccion(direccion);
     }
 
     public void EliminarDireccion(@PathVariable long id){
-        direccionDao.EliminarDireccion(id);
+        IDireccionDao.EliminarDireccion(id);
     }
 }

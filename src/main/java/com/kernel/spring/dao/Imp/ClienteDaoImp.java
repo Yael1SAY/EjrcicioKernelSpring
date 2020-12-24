@@ -1,6 +1,6 @@
 package com.kernel.spring.dao.Imp;
 
-import com.kernel.spring.dao.ClienteDAO;
+import com.kernel.spring.dao.IClienteDAO;
 import com.kernel.spring.model.Cliente;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 @Transactional
 @Repository
-public class ClienteDaoImp implements ClienteDAO {
+public class ClienteDaoImp implements IClienteDAO {
 
     private static final Logger LOG = Logger.getLogger(ClienteDaoImp.class.getName());
 

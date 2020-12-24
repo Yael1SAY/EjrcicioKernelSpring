@@ -13,7 +13,7 @@ public class Cliente {
     @Column(name = "idCliente", updatable = false, nullable = false)
     private long idCliente;
 
-    @Column(name = "nombre")
+    //Si no se agrega la anotación @Column toma el nombre de la variable
     private String nombre;
 
     @Column(name = "apellido ")

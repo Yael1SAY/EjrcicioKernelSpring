@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
-public interface ClienteDAO {
+public interface IClienteDAO {
 
     List<Cliente> ObtenerClientes();
 
