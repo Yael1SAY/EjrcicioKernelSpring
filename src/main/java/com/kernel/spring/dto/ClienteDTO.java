@@ -10,6 +10,11 @@ public class ClienteDTO implements Serializable{
     public ClienteDTO() {
     }
 
+    public ClienteDTO(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
     public String getNombre() {
         return nombre;
     }

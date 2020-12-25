@@ -12,16 +12,16 @@ import java.util.List;
 
 @Transactional
 @Repository
-public class IDireccionDaoImp implements IDireccionDAO {
+public class DireccionDaoImp implements IDireccionDAO {
 
     @PersistenceContext
     EntityManager entityManager;
 
     @Transactional
     @Override
-    public List<ClienteDTO> ObtenerDirecciones() {
-        String hql = "From Cliente, Direccion";
-        return (List<ClienteDTO>) entityManager.createQuery(hql).getResultList();
+    public List<Direccion> ObtenerDirecciones() {
+        String hql = "From Direccion";
+        return (List<Direccion>) entityManager.createQuery(hql).getResultList();
     }
 
     @Transactional

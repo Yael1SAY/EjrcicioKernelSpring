@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IDireccionDAO {
 
-    List<ClienteDTO> ObtenerDirecciones();
+    List<Direccion> ObtenerDirecciones();
 
     Direccion ObtenerDireccionId(@PathVariable long id);
 

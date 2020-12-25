@@ -1,7 +1,6 @@
 package com.kernel.spring.dao.Imp;
 
 import com.kernel.spring.dao.IClienteDAO;
-import com.kernel.spring.dto.ClienteDTO;
 import com.kernel.spring.model.Cliente;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,20 +12,21 @@ import java.util.logging.Logger;
 
 @Transactional
 @Repository
-public class IClienteDaoImp implements IClienteDAO {
+public class ClienteDaoImp implements IClienteDAO {
 
-    private static final Logger LOG = Logger.getLogger(IClienteDaoImp.class.getName());
+    private static final Logger LOG = Logger.getLogger(ClienteDaoImp.class.getName());
 
     @PersistenceContext
     EntityManager entityManager;
 
     @Transactional
     @Override
-    public List<ClienteDTO> ObtenerClientes() {
-        String hql = "Select c.nombre, c.apellido From Cliente as c";
-        List<ClienteDTO>listDto = (List<ClienteDTO>) entityManager.createQuery(hql).getResultList();
-        LOG.info("DAO Lista Cientes: " + listDto);
-        return listDto;
+    public List<Cliente> ObtenerClientes() {
+        //String hql = "Select c.nombre, c.apellido From Cliente as c";
+        String hql = "From Cliente as c";
+        List<Cliente> listCliente = (List<Cliente>) entityManager.createQuery(hql).getResultList();
+        LOG.info("DAO Lista Cientes: " + listCliente);
+        return listCliente;
     }
 
     @Transactional

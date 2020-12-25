@@ -21,9 +21,9 @@ public class ClienteController {
     //Mostrar TODOS los usuarios
     @RequestMapping(value = "/", method = RequestMethod.GET)
     List<ClienteDTO> ObtenerClientes(){
-        List<ClienteDTO> listDto = clienteService.ObtenerClientes();
-        LOG.info("Controller lista Clientes: " + listDto);
-        return listDto;
+        List<ClienteDTO> listCliente = clienteService.ObtenerClientes();
+        LOG.info("Controller lista Clientes: " + listCliente);
+        return listCliente;
     }
 
     //Mostrar UN usuario
