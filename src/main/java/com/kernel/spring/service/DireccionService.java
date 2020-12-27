@@ -27,8 +27,8 @@ public class DireccionService {
     Cliente cliente;
     Direccion direccion;
 
-    public List<Direccion> ObtenerDirecciones(){
-        List<Direccion> listD = IDireccionDao.ObtenerDirecciones();
+    public List<ClienteDirDTO> ObtenerDirecciones(){
+        List<ClienteDirDTO> listD = IDireccionDao.ObtenerDirecciones();
         return listD;
     }
 
@@ -36,15 +36,20 @@ public class DireccionService {
         ClienteDirDTO clienteDirDto;
         Cliente cliente = iClienteDao.ObtenerClienteId(id);
         Direccion direccion = IDireccionDao.ObtenerDireccionId(id);
-
         clienteDirDto = new ClienteDirDTO();
-        clienteDirDto.setNombre(cliente.getNombre());
-        clienteDirDto.setApellido(cliente.getApellido());
-        clienteDirDto.setCalle(direccion.getCalle());
-        clienteDirDto.setNoExterior(direccion.getNoExterior());
-        clienteDirDto.setCodPostal(direccion.getCodPostal());
-        clienteDirDto.setEstado(direccion.getEstado());
-        clienteDirDto.setReferencia(direccion.getReferencia());
+        if (cliente != null && direccion != null){
+            clienteDirDto.setNombre(cliente.getNombre());
+            clienteDirDto.setApellido(cliente.getApellido());
+            clienteDirDto.setCalle(direccion.getCalle());
+            clienteDirDto.setNoExterior(direccion.getNoExterior());
+            clienteDirDto.setCodPostal(direccion.getCodPostal());
+            clienteDirDto.setEstado(direccion.getEstado());
+            clienteDirDto.setReferencia(direccion.getReferencia());
+        }else{
+            LOG.info("No existe el Clinte con ese id");
+            return null;
+        }
+
         LOG.info("Service Cliente Direccion: " + clienteDirDto);
         return clienteDirDto;
     }

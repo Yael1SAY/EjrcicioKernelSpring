@@ -18,7 +18,7 @@ public class DireccionController {
 
     //Trae Todos los usuarios
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    List<Direccion> ObtenerDirecciones(){
+    List<ClienteDirDTO> ObtenerDirecciones(){
         return direccionService.ObtenerDirecciones();
     }
 

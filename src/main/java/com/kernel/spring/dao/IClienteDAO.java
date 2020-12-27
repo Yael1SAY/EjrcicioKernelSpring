@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IClienteDAO {
 
-    List<Cliente> ObtenerClientes();
+    List<ClienteDTO> ObtenerClientes();
 
     Cliente ObtenerClienteId(long id);
 

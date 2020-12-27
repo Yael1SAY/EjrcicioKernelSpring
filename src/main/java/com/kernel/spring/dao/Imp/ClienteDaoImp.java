@@ -1,6 +1,7 @@
 package com.kernel.spring.dao.Imp;
 
 import com.kernel.spring.dao.IClienteDAO;
+import com.kernel.spring.dto.ClienteDTO;
 import com.kernel.spring.model.Cliente;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,11 +22,10 @@ public class ClienteDaoImp implements IClienteDAO {
 
     @Transactional
     @Override
-    public List<Cliente> ObtenerClientes() {
-        //String hql = "Select c.nombre, c.apellido From Cliente as c";
-        String hql = "From Cliente as c";
-        List<Cliente> listCliente = (List<Cliente>) entityManager.createQuery(hql).getResultList();
-        LOG.info("DAO Lista Cientes: " + listCliente);
+    public List<ClienteDTO> ObtenerClientes() {
+        //String hql = "From Cliente as c";
+        String hql = "Select NEW com.kernel.spring.dto.ClienteDTO(c.nombre, c.apellido) From Cliente as c";
+        List<ClienteDTO> listCliente = entityManager.createQuery(hql, ClienteDTO.class).getResultList();
         return listCliente;
     }
 

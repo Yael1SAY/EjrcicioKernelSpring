@@ -1,7 +1,7 @@
 package com.kernel.spring.dao.Imp;
 
 import com.kernel.spring.dao.IDireccionDAO;
-import com.kernel.spring.dto.ClienteDTO;
+import com.kernel.spring.dto.ClienteDirDTO;
 import com.kernel.spring.model.Direccion;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,9 +19,12 @@ public class DireccionDaoImp implements IDireccionDAO {
 
     @Transactional
     @Override
-    public List<Direccion> ObtenerDirecciones() {
-        String hql = "From Direccion";
-        return (List<Direccion>) entityManager.createQuery(hql).getResultList();
+    public List<ClienteDirDTO> ObtenerDirecciones() {
+        String hql = "Select NEW com.kernel.spring.dto.ClienteDirDTO(c.nombre, c.apellido, dir.calle, " +
+                        "dir.noExterior, dir.codPostal, dir.estado, dir.referencia) " +
+                        "From Direccion as dir INNER JOIN dir.cliente as c";
+
+        return entityManager.createQuery(hql, ClienteDirDTO.class).getResultList();
     }
 
     @Transactional

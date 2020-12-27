@@ -13,6 +13,16 @@ public class ClienteDirDTO {
     public ClienteDirDTO() {
     }
 
+    public ClienteDirDTO(String nombre, String apellido, String calle, int noExterior, int codPostal, String estado, String referencia) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.calle = calle;
+        this.noExterior = noExterior;
+        this.codPostal = codPostal;
+        this.estado = estado;
+        this.referencia = referencia;
+    }
+
     public String getNombre() {
         return nombre;
     }
