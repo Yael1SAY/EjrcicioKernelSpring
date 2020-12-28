@@ -20,7 +20,8 @@ public class DireccionDaoImp implements IDireccionDAO {
     @Transactional
     @Override
     public List<ClienteDirDTO> ObtenerDirecciones() {
-        String hql = "Select NEW com.kernel.spring.dto.ClienteDirDTO(c.nombre, c.apellido, dir.calle, " +
+        String hql = "Select NEW com.kernel.spring.dto.ClienteDirDTO(c.idCliente, c.nombre, c.apellido, " +
+                        "dir.idDireccion, dir.calle, " +
                         "dir.noExterior, dir.codPostal, dir.estado, dir.referencia) " +
                         "From Direccion as dir INNER JOIN dir.cliente as c";
 

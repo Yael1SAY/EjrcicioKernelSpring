@@ -38,8 +38,10 @@ public class DireccionService {
         Direccion direccion = IDireccionDao.ObtenerDireccionId(id);
         clienteDirDto = new ClienteDirDTO();
         if (cliente != null && direccion != null){
+            clienteDirDto.setIdCliente(cliente.getIdCliente());
             clienteDirDto.setNombre(cliente.getNombre());
             clienteDirDto.setApellido(cliente.getApellido());
+            clienteDirDto.setIdDireccion(direccion.getIdDireccion());
             clienteDirDto.setCalle(direccion.getCalle());
             clienteDirDto.setNoExterior(direccion.getNoExterior());
             clienteDirDto.setCodPostal(direccion.getCodPostal());
