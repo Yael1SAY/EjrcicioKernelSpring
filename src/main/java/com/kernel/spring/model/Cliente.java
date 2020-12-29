@@ -1,6 +1,7 @@
 package com.kernel.spring.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "clientes")
@@ -11,13 +12,16 @@ public class Cliente {
     @Column(name = "id_cliente", updatable = false, nullable = false)
     private long idCliente;
 
+    @NotNull
     @Column(name = "nombre")
     private String nombre;
 
+    @NotNull
     @Column(name = "apellido ")
     private String apellido;
 
-    // @JsonIgnore
+
+    @NotNull
     @Column(name = "contrasenia")
     private String contrasenia;
 

@@ -1,7 +1,5 @@
 package com.kernel.spring.model;
 
-import com.fasterxml.jackson.annotation.*;
-
 import javax.persistence.*;
 
 @Entity

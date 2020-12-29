@@ -1,17 +1,14 @@
 package com.kernel.spring.service;
 
-import com.kernel.spring.dao.IClienteDAO;
 import com.kernel.spring.dao.IDireccionDAO;
-import com.kernel.spring.dto.ClienteDTO;
 import com.kernel.spring.dto.ClienteDirDTO;
-import com.kernel.spring.model.Cliente;
 import com.kernel.spring.model.Direccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -22,10 +19,6 @@ public class DireccionService {
 
     @Autowired
     IDireccionDAO IDireccionDao;
-    @Autowired
-    IClienteDAO iClienteDao;
-    Cliente cliente;
-    Direccion direccion;
 
     public List<ClienteDirDTO> ObtenerDirecciones(){
         List<ClienteDirDTO> listD = IDireccionDao.ObtenerDirecciones();
@@ -33,7 +26,7 @@ public class DireccionService {
     }
 
     public ClienteDirDTO ObtenerDireccionId(long id){
-        ClienteDirDTO clienteDirDto;
+        /*ClienteDirDTO clienteDirDto;
         Cliente cliente = iClienteDao.ObtenerClienteId(id);
         Direccion direccion = IDireccionDao.ObtenerDireccionId(id);
         clienteDirDto = new ClienteDirDTO();
@@ -50,10 +43,8 @@ public class DireccionService {
         }else{
             LOG.info("No existe el Clinte con ese id");
             return null;
-        }
-
-        LOG.info("Service Cliente Direccion: " + clienteDirDto);
-        return clienteDirDto;
+        }*/
+        return IDireccionDao.ObtenerDireccionId(id);
     }
 
     public Direccion RegistrarDireccion(Direccion direccion){
@@ -65,6 +56,10 @@ public class DireccionService {
     }
 
     public void EliminarDireccion(@PathVariable long id){
-        IDireccionDao.EliminarDireccion(id);
+        //try {
+            IDireccionDao.EliminarDireccion(id);
+        //}catch (UnexpectedRollbackException e){
+            //e.printStackTrace();
+        //}
     }
 }
