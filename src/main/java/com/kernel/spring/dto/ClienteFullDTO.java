@@ -1,10 +1,18 @@
 package com.kernel.spring.dto;
 
-public class ClienteFullDTO {
+
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public @Data class ClienteFullDTO {
 
     private String nombreCompleto;
     private String direccion;
-
+/*
     public ClienteFullDTO() {
     }
 
@@ -23,4 +31,5 @@ public class ClienteFullDTO {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+ */
 }
