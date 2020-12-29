@@ -26,24 +26,20 @@ public class DireccionDaoImp implements IDireccionDAO {
     @Transactional
     @Override
     public List<ClienteDirDTO> ObtenerDirecciones() {
-        final String hql = "Select NEW com.kernel.spring.dto.ClienteDirDTO(c.idCliente, c.nombre, c.apellido, " +
-                     "dir.idDireccion, dir.calle, dir.noExterior, dir.codPostal, dir.estado, dir.referencia) " +
-                     "From Direccion as dir INNER JOIN dir.cliente as c";
+        final String hql = "Select NEW com.kernel.spring.dto.ClienteDirDTO(c.nombre, c.apellido, dir.calle, dir.noExterior, dir.codPostal, dir.estado, dir.referencia) " +
+                "From Direccion as dir INNER JOIN dir.cliente as c";
         return entityManager.createQuery(hql, ClienteDirDTO.class).getResultList();
     }
 
     @Transactional
     @Override
-    public ClienteDirDTO ObtenerDireccionId(long id) {
-        //try {
-            String sql = "Select NEW com.kernel.spring.dto.ClienteDirDTO(c.idCliente, c.nombre, c.apellido, " +
-                    "dir.idDireccion, dir.calle, dir.noExterior, dir.codPostal, dir.estado, dir.referencia) " +
+    public Direccion ObtenerDireccionId(long id) {
+            /*String sql = "Select NEW com.kernel.spring.dto.ClienteDirDTO(c.nombre, c.apellido, " +
+                    "dir.calle, dir.noExterior, dir.codPostal, dir.estado, dir.referencia) " +
                     "From Direccion as dir JOIN dir.cliente as c where c.idCliente = :id";
             return entityManager.createQuery(sql, ClienteDirDTO.class).setParameter("id",id).getSingleResult();
-        //}catch (NoResultException e){
-            //e.printStackTrace();
-            //return null;
-        //}
+            */
+        return entityManager.find(Direccion.class, id);
     }
 
     @Transactional

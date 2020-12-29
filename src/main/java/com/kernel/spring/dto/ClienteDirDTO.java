@@ -2,10 +2,8 @@ package com.kernel.spring.dto;
 
 public class ClienteDirDTO {
 
-    private long idCliente;
     private String nombre;
     private String apellido;
-    private long idDireccion;
     private String calle;
     private int noExterior;
     private int codPostal;
@@ -15,32 +13,14 @@ public class ClienteDirDTO {
     public ClienteDirDTO() {
     }
 
-    public ClienteDirDTO(long idCliente, String nombre, String apellido, long idDireccion,String calle, int noExterior, int codPostal, String estado, String referencia) {
-        this.idCliente = idCliente;
+    public ClienteDirDTO(String nombre, String apellido, String calle, int noExterior, int codPostal, String estado, String referencia) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.idDireccion = idDireccion;
         this.calle = calle;
         this.noExterior = noExterior;
         this.codPostal = codPostal;
         this.estado = estado;
         this.referencia = referencia;
-    }
-
-    public long getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(long idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public long getIdDireccion() {
-        return idDireccion;
-    }
-
-    public void setIdDireccion(long idDireccion) {
-        this.idDireccion = idDireccion;
     }
 
     public String getNombre() {
@@ -99,16 +79,4 @@ public class ClienteDirDTO {
         this.referencia = referencia;
     }
 
-    @Override
-    public String toString() {
-        return "ClienteDirDTO{" +
-                "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", calle='" + calle + '\'' +
-                ", noExterior=" + noExterior +
-                ", codPostal=" + codPostal +
-                ", estado='" + estado + '\'' +
-                ", referencia='" + referencia + '\'' +
-                '}';
-    }
 }

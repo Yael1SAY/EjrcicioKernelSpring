@@ -2,10 +2,11 @@ package com.kernel.spring.service;
 
 import com.kernel.spring.dao.IDireccionDAO;
 import com.kernel.spring.dto.ClienteDirDTO;
+import com.kernel.spring.dto.ClienteFullDTO;
+import com.kernel.spring.model.Cliente;
 import com.kernel.spring.model.Direccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -25,26 +26,15 @@ public class DireccionService {
         return listD;
     }
 
-    public ClienteDirDTO ObtenerDireccionId(long id){
-        /*ClienteDirDTO clienteDirDto;
-        Cliente cliente = iClienteDao.ObtenerClienteId(id);
+    public ClienteFullDTO ObtenerDireccionId(long id){
+        ClienteFullDTO dto = new ClienteFullDTO();
         Direccion direccion = IDireccionDao.ObtenerDireccionId(id);
-        clienteDirDto = new ClienteDirDTO();
-        if (cliente != null && direccion != null){
-            clienteDirDto.setIdCliente(cliente.getIdCliente());
-            clienteDirDto.setNombre(cliente.getNombre());
-            clienteDirDto.setApellido(cliente.getApellido());
-            clienteDirDto.setIdDireccion(direccion.getIdDireccion());
-            clienteDirDto.setCalle(direccion.getCalle());
-            clienteDirDto.setNoExterior(direccion.getNoExterior());
-            clienteDirDto.setCodPostal(direccion.getCodPostal());
-            clienteDirDto.setEstado(direccion.getEstado());
-            clienteDirDto.setReferencia(direccion.getReferencia());
-        }else{
-            LOG.info("No existe el Clinte con ese id");
-            return null;
-        }*/
-        return IDireccionDao.ObtenerDireccionId(id);
+        Cliente cliente = direccion.getCliente();
+        dto.setNombreCompleto(cliente.getNombre() + " " + cliente.getApellido());
+        dto.setDireccion(direccion.getCalle() + ", " + direccion.getNoExterior() + ", " +
+                direccion.getCodPostal() + ", " + direccion.getEstado() + ", Referencia: " +
+                direccion.getReferencia() );
+        return dto;
     }
 
     public Direccion RegistrarDireccion(Direccion direccion){

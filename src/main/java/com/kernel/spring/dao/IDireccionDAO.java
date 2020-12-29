@@ -12,7 +12,7 @@ public interface IDireccionDAO {
 
     List<ClienteDirDTO> ObtenerDirecciones();
 
-    ClienteDirDTO ObtenerDireccionId(@PathVariable long id);
+    Direccion ObtenerDireccionId(@PathVariable long id);
 
     Direccion RegistrarDireccion(@RequestBody Direccion direccion);
 

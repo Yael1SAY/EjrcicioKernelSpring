@@ -2,6 +2,7 @@ package com.kernel.spring.controller;
 
 import com.kernel.spring.dto.ClienteDTO;
 import com.kernel.spring.dto.ClienteDirDTO;
+import com.kernel.spring.dto.ClienteFullDTO;
 import com.kernel.spring.model.Direccion;
 import com.kernel.spring.service.DireccionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class DireccionController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    ClienteDirDTO ObtenerDireccionId(@PathVariable long id){
+    ClienteFullDTO ObtenerDireccionId(@PathVariable long id){
         return direccionService.ObtenerDireccionId(id);
     }
 
