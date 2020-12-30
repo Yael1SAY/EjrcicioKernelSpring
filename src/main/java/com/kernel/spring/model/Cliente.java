@@ -5,7 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "clientes")
@@ -18,17 +19,17 @@ public @Data class Cliente {
     @Column(name = "id_cliente", updatable = false, nullable = false)
     private long idCliente;
 
-    @NotNull
-    @Column(name = "nombre")
+    @NotBlank(message = "No se permiten campos NOMBRE vacios")
+    @Column(name = "nombre", nullable = false, length = 30)
     private String nombre;
 
-    @NotNull
-    @Column(name = "apellido ")
+    @NotBlank(message = "No se permiten campos APELLIDO vacios")
+    @Column(name = "apellido", nullable = false, length = 50)
     private String apellido;
 
-
-    @NotNull
-    @Column(name = "contrasenia")
+    @NotBlank(message = "No se permiten campos CONTRASEÑA vacios")
+    @Size(min = 4, max = 12, message = "Minimo 4 caracteres para la contraseña")
+    @Column(name = "contrasenia", nullable = false, length = 12)
     private String contrasenia;
 
 }
