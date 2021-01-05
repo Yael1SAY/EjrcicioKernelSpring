@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.logging.Logger;
 
-@RestController
-@RequestMapping("cliente")
+@RestController //Para indicar que es un servicio REST
+@RequestMapping("cliente") //Se va a consultar el servicio por medio de la direccion cliente
 public class ClienteController {
 
     private static final Logger LOG = Logger.getLogger(ClienteController.class.getName());

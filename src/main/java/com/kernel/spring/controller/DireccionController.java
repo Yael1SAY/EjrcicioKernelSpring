@@ -13,8 +13,8 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.logging.Logger;
 
-@RestController
-@RequestMapping("direccion")
+@RestController //Para indicar que es un servicio REST
+@RequestMapping("direccion") //Se va a consultar el servicio por medio de la direccion cliente
 public class DireccionController {
     private static final Logger LOG = Logger.getLogger(ClienteService.class.getName());
 
@@ -22,19 +22,21 @@ public class DireccionController {
     DireccionService direccionService;
 
     //Trae Todos los usuarios
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET) //Se indica la ruta y el metodo que utiliza (GET)
     List<ClienteDirDTO> ObtenerDirecciones(){
         return direccionService.ObtenerDirecciones();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)//se agrega al path una parametro que se recupera con la anotacion @PathVariable
     ClienteFullDTO ObtenerDireccionId(@PathVariable long id){
         return direccionService.ObtenerDireccionId(id);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
+    //RequestBody para traer todo el cuerpo del objeto
+    //@Valid para uqe reconosca las validaciones creadas en el Bean
     Direccion RegistrarDireccion(@Valid @RequestBody Direccion direccion, BindingResult binding){
-        LOG.info("Binding Controller: " + binding);
+        LOG.info("Binding Controller: " + binding);//BindingResult trae el numero de errores de validacion
         return direccionService.RegistrarDireccion(direccion, binding);
     }
 

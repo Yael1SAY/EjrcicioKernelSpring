@@ -38,7 +38,7 @@ public class ClienteDaoImp implements IClienteDAO {
     @Transactional
     @Override
     public Cliente RegistrarCliente(Cliente cliente) {
-        entityManager.merge(cliente);
+        //entityManager.merge(cliente);
         return cliente;
     }
 
@@ -53,6 +53,6 @@ public class ClienteDaoImp implements IClienteDAO {
     @Override
     public void EliminarCliente(long id) {
         Cliente cliente = ObtenerClienteId(id);
-        entityManager.remove(cliente);
+        //entityManager.remove(cliente);
     }
 }

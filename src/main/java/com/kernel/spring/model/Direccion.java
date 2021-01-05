@@ -8,24 +8,23 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "direcciones")
+@Entity//indica que es una entidad
+@Table(name = "direcciones") //indicar el nombre de la tabla
 @AllArgsConstructor
 @NoArgsConstructor
 public @Data class Direccion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_direccion", updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//se indica que sera autoincrmenteable
+    @Column(name = "id_direccion", updatable = false, nullable = false)//se indica que es una columna
     private long idDireccion;
 
     @NotBlank(message = "No se permite campo CALLE vacio")
     @Column(name = "calle", nullable = false, length = 50)
     private String calle;
 
-    //@NotEmpty(message = "No se permite campo vacio")
+    @NotEmpty(message = "No se permite campo vacio")
     //@Size(min = 1, max = 8, message = "Minimo 1 caracter")
     @Column(name = "no_exterior", nullable = false, length = 8)
     private int noExterior;
@@ -43,8 +42,8 @@ public @Data class Direccion {
     @Column(name = "referencia", nullable = false, length = 250)
     private String referencia;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_cliente", updatable = false, nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)//Se indica la realcion 1 a 1
+    @JoinColumn(name = "id_cliente", updatable = false, nullable = false) //La union se realiza mediate el campo id_cliente
     @Valid
     private Cliente cliente;
 

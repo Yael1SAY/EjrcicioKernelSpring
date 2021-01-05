@@ -10,9 +10,9 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "clientes")
-@AllArgsConstructor
-@NoArgsConstructor
-public @Data class Cliente {
+@AllArgsConstructor //Crea constructor con todos los parametros
+@NoArgsConstructor //Crea constructor vacio
+public @Data class Cliente { //@Data agrega getter, setter, toString
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

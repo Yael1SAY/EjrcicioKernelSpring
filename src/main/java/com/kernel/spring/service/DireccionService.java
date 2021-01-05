@@ -16,12 +16,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
-@Service
+@Service //indica que es un servicio
 public class DireccionService {
 
     private static final Logger LOG = Logger.getLogger(ClienteService.class.getName());
 
-    @Autowired
+    @Autowired//inyeccion de dependencias de la interface IDireccion
     IDireccionDAO IDireccionDao;
 
     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -79,7 +79,6 @@ public class DireccionService {
             }
             return null;
         }
-
     }
 
     public void EliminarDireccion(@PathVariable long id){
