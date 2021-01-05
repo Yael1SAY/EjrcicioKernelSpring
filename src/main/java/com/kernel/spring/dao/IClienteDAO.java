@@ -7,14 +7,14 @@ import java.util.List;
 
 public interface IClienteDAO {
 
-    List<ClienteDTO> ObtenerClientes();
+    List<ClienteDTO> obtenerClientes();
 
-    Cliente ObtenerClienteId(long id);
+    Cliente obtenerClienteId(long id);
 
-    Cliente RegistrarCliente(Cliente cliente);
+    Cliente registrarCliente(Cliente cliente);
 
-    Cliente ActualizarCliente(Cliente cliente);
+    Cliente actualizarCliente(Cliente cliente);
 
-    void EliminarCliente(long id);
+    void eliminarCliente(long id);
 
 }

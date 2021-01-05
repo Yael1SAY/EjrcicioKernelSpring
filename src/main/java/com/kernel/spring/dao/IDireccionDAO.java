@@ -10,13 +10,13 @@ import java.util.List;
 
 public interface IDireccionDAO {
 
-    List<ClienteDirDTO> ObtenerDirecciones();
+    List<ClienteDirDTO> obtenerDirecciones();
 
-    Direccion ObtenerDireccionId(@PathVariable long id);
+    Direccion obtenerDireccionId(@PathVariable long id);
 
-    Direccion RegistrarDireccion(@RequestBody Direccion direccion);
+    Direccion registrarDireccion(@RequestBody Direccion direccion);
 
-    Direccion ActualizarDireccion(@RequestBody Direccion direccion);
+    Direccion actualizarDireccion(@RequestBody Direccion direccion);
 
-    void EliminarDireccion(@PathVariable long id);
+    void eliminarDireccion(@PathVariable long id);
 }

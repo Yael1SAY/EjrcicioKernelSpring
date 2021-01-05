@@ -22,7 +22,7 @@ public class DireccionDaoImp implements IDireccionDAO {
 
     @Transactional//indica que se realizara una accion en la base de datos
     @Override
-    public List<ClienteDirDTO> ObtenerDirecciones() {
+    public List<ClienteDirDTO> obtenerDirecciones() {
         final String hql = "Select NEW com.kernel.spring.dto.ClienteDirDTO(c.nombre, c.apellido, dir.calle, dir.noExterior, dir.codPostal, dir.estado, dir.referencia) " +
                 "From Direccion as dir INNER JOIN dir.cliente as c";
         return this.entityManager.createQuery(hql, ClienteDirDTO.class).getResultList();
@@ -30,28 +30,28 @@ public class DireccionDaoImp implements IDireccionDAO {
 
     @Transactional
     @Override
-    public Direccion ObtenerDireccionId(long id) {
+    public Direccion obtenerDireccionId(long id) {
             //return entityManager.createQuery(sql, ClienteDirDTO.class).setParameter("id",id).getSingleResult();
             return entityManager.find(Direccion.class, id);
     }
 
     @Transactional
     @Override
-    public Direccion RegistrarDireccion(Direccion direccion) {
+    public Direccion registrarDireccion(Direccion direccion) {
             entityManager.merge(direccion);
             return direccion;
     }
 
     @Transactional
     @Override
-    public Direccion ActualizarDireccion(Direccion direccion) {
+    public Direccion actualizarDireccion(Direccion direccion) {
             entityManager.merge(direccion);
             return direccion;
     }
 
     @Transactional
     @Override
-    public void EliminarDireccion(long id) throws IllegalArgumentException{
+    public void eliminarDireccion(long id) throws IllegalArgumentException{
             Direccion direccion = entityManager.find(Direccion.class,id);
             entityManager.remove(direccion);
     }

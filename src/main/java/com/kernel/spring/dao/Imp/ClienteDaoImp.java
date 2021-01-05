@@ -22,7 +22,7 @@ public class ClienteDaoImp implements IClienteDAO {
 
     @Transactional
     @Override
-    public List<ClienteDTO> ObtenerClientes() {
+    public List<ClienteDTO> obtenerClientes() {
         //String hql = "From Cliente as c";
         String hql = "Select NEW com.kernel.spring.dto.ClienteDTO(c.nombre, c.apellido) From Cliente as c";
         List<ClienteDTO> listCliente = entityManager.createQuery(hql, ClienteDTO.class).getResultList();
@@ -31,28 +31,28 @@ public class ClienteDaoImp implements IClienteDAO {
 
     @Transactional
     @Override
-    public Cliente ObtenerClienteId(long id) {
+    public Cliente obtenerClienteId(long id) {
         return entityManager.find(Cliente.class, id);
     }
 
     @Transactional
     @Override
-    public Cliente RegistrarCliente(Cliente cliente) {
+    public Cliente registrarCliente(Cliente cliente) {
         //entityManager.merge(cliente);
         return cliente;
     }
 
     @Transactional
     @Override
-    public Cliente ActualizarCliente(Cliente cliente) {
+    public Cliente actualizarCliente(Cliente cliente) {
         entityManager.merge(cliente);
         return cliente;
     }
 
     @Transactional
     @Override
-    public void EliminarCliente(long id) {
-        Cliente cliente = ObtenerClienteId(id);
+    public void eliminarCliente(long id) {
+        Cliente cliente = obtenerClienteId(id);
         //entityManager.remove(cliente);
     }
 }

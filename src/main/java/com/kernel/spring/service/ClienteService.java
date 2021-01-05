@@ -22,29 +22,29 @@ public class ClienteService {
     @Autowired
     IClienteDAO IClienteDao;
 
-    public List<ClienteDTO> ObtenerClientes(){
-        List<ClienteDTO> listCliente = IClienteDao.ObtenerClientes();
+    public List<ClienteDTO> obtenerClientes(){
+        List<ClienteDTO> listCliente = IClienteDao.obtenerClientes();
         LOG.info("Service Lista Clientes: " + listCliente);
         return listCliente;
     }
 
-    public ClienteDTO ObtenerClienteId(long id){
-        Cliente cliente = IClienteDao.ObtenerClienteId(id);
+    public ClienteDTO obtenerClienteId(long id){
+        Cliente cliente = IClienteDao.obtenerClienteId(id);
         ClienteDTO clienteDto = new ClienteDTO();
         clienteDto.setNombre(cliente.getNombre());
         clienteDto.setApellido(cliente.getApellido());
         return clienteDto;
     }
 
-    public Cliente RegistrarCliente(Cliente cliente){
-        return IClienteDao.RegistrarCliente(cliente);
+    public Cliente registrarCliente(Cliente cliente){
+        return IClienteDao.registrarCliente(cliente);
     }
 
-    public Cliente ActualizarCliente(Cliente cliente){
-        return IClienteDao.ActualizarCliente(cliente);
+    public Cliente actualizarCliente(Cliente cliente){
+        return IClienteDao.actualizarCliente(cliente);
     }
 
-    public void EliminarCliente(long id){
-        IClienteDao.EliminarCliente(id);
+    public void eliminarCliente(long id){
+        IClienteDao.eliminarCliente(id);
     }
 }

@@ -20,36 +20,36 @@ public class ClienteController {
 
     //Mostrar TODOS los usuarios
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    List<ClienteDTO> ObtenerClientes(){
-        List<ClienteDTO> listCliente = clienteService.ObtenerClientes();
+    List<ClienteDTO> obtenerClientes(){
+        List<ClienteDTO> listCliente = clienteService.obtenerClientes();
         LOG.info("Controller lista Clientes: " + listCliente);
         return listCliente;
     }
 
     //Mostrar UN usuario
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    ClienteDTO ObtenerClienteId(@PathVariable long id){
-        ClienteDTO dto = clienteService.ObtenerClienteId(id);
+    ClienteDTO obtenerClienteId(@PathVariable long id){
+        ClienteDTO dto = clienteService.obtenerClienteId(id);
         LOG.info("Controller ClienteDTO: " + dto);
         return dto;
     }
 
     //Registrar un usuario
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    Cliente RegistrarCliente(@RequestBody Cliente cliente){
-        return clienteService.RegistrarCliente(cliente);
+    Cliente registrarCliente(@RequestBody Cliente cliente){
+        return clienteService.registrarCliente(cliente);
     }
 
     //Actualizar un Cliente
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    Cliente ActualizarCliente(@RequestBody Cliente cliente){
-        return clienteService.ActualizarCliente(cliente);
+    Cliente actualizarCliente(@RequestBody Cliente cliente){
+        return clienteService.actualizarCliente(cliente);
     }
 
     //Eliminar un Cliente
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    void EliminarCliente(@PathVariable long id){
-        clienteService.EliminarCliente(id);
+    void eliminarCliente(@PathVariable long id){
+        clienteService.eliminarCliente(id);
     }
 
 }

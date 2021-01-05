@@ -23,30 +23,30 @@ public class DireccionController {
 
     //Trae Todos los usuarios
     @RequestMapping(value = "/", method = RequestMethod.GET) //Se indica la ruta y el metodo que utiliza (GET)
-    List<ClienteDirDTO> ObtenerDirecciones(){
-        return direccionService.ObtenerDirecciones();
+    List<ClienteDirDTO> obtenerDirecciones(){
+        return direccionService.obtenerDirecciones();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)//se agrega al path una parametro que se recupera con la anotacion @PathVariable
-    ClienteFullDTO ObtenerDireccionId(@PathVariable long id){
-        return direccionService.ObtenerDireccionId(id);
+    ClienteFullDTO obtenerDireccionId(@PathVariable long id){
+        return direccionService.obtenerDireccionId(id);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     //RequestBody para traer todo el cuerpo del objeto
     //@Valid para uqe reconosca las validaciones creadas en el Bean
-    Direccion RegistrarDireccion(@Valid @RequestBody Direccion direccion, BindingResult binding){
+    Direccion registrarDireccion(@Valid @RequestBody Direccion direccion, BindingResult binding){
         LOG.info("Binding Controller: " + binding);//BindingResult trae el numero de errores de validacion
-        return direccionService.RegistrarDireccion(direccion, binding);
+        return direccionService.registrarDireccion(direccion, binding);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    Direccion ActualizarDireccion(@Valid @RequestBody Direccion direccion, BindingResult binding){
-        return direccionService.ActualizarDireccion(direccion, binding);
+    Direccion actualizarDireccion(@Valid @RequestBody Direccion direccion, BindingResult binding){
+        return direccionService.actualizarDireccion(direccion, binding);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    void EliminarDireccion(@PathVariable long id){
-        direccionService.EliminarDireccion(id);
+    void eliminarDireccion(@PathVariable long id){
+        direccionService.eliminarDireccion(id);
     }
 }

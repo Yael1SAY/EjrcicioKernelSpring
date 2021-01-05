@@ -27,13 +27,13 @@ public class DireccionService {
     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     Validator validator = factory.getValidator();
 
-    public List<ClienteDirDTO> ObtenerDirecciones(){
-        return IDireccionDao.ObtenerDirecciones();
+    public List<ClienteDirDTO> obtenerDirecciones(){
+        return IDireccionDao.obtenerDirecciones();
     }
 
-    public ClienteFullDTO ObtenerDireccionId(long id){
+    public ClienteFullDTO obtenerDireccionId(long id){
         ClienteFullDTO dto = new ClienteFullDTO();
-        Direccion direccion = IDireccionDao.ObtenerDireccionId(id);
+        Direccion direccion = IDireccionDao.obtenerDireccionId(id);
         try{
             Cliente cliente = direccion.getCliente();
             dto.setNombreCompleto(cliente.getNombre() + " " + cliente.getApellido());
@@ -49,11 +49,11 @@ public class DireccionService {
         }
     }
 
-    public Direccion RegistrarDireccion(Direccion direccion, BindingResult binding){
+    public Direccion registrarDireccion(Direccion direccion, BindingResult binding){
         LOG.info("bindingResult Service: " + binding);//Muestra cuantos errores arojo
         Set<ConstraintViolation<Direccion>> violations = validator.validate(direccion);
         if(!binding.hasErrors()){//Si no hay errores inserta la direccion
-            Direccion dir = IDireccionDao.RegistrarDireccion(direccion);
+            Direccion dir = IDireccionDao.registrarDireccion(direccion);
             LOG.info("Se inserto corectamente el cliente");
             return dir;
         }else {//Si hay errores los imprime y retorna un null
@@ -65,11 +65,11 @@ public class DireccionService {
         }
     }
 
-    public Direccion ActualizarDireccion(@RequestBody Direccion direccion, BindingResult binding){
+    public Direccion actualizarDireccion(@RequestBody Direccion direccion, BindingResult binding){
         LOG.info("bindingResult Service: " + binding);
         Set<ConstraintViolation<Direccion>> violations = validator.validate(direccion);
         if(!binding.hasErrors()){
-            Direccion dir = IDireccionDao.ActualizarDireccion(direccion);
+            Direccion dir = IDireccionDao.actualizarDireccion(direccion);
             LOG.info("Se actualizo correctamente el cliente");
             return dir;
         }else{
@@ -81,9 +81,9 @@ public class DireccionService {
         }
     }
 
-    public void EliminarDireccion(@PathVariable long id){
+    public void eliminarDireccion(@PathVariable long id){
         try{
-            IDireccionDao.EliminarDireccion(id);
+            IDireccionDao.eliminarDireccion(id);
             LOG.info("Se elimino correctamente el cliente con direccion id: " + id);
         }catch (Exception e) {
             LOG.warning("No existe el cliente con id: " + id);
