@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-public interface IDireccionDAO {
+public interface IDireccionDao {
 
     List<ClienteDirDTO> obtenerDirecciones();
 

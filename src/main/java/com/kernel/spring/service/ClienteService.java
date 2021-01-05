@@ -1,7 +1,6 @@
 
 package com.kernel.spring.service;
 
-import com.kernel.spring.dao.IClienteDAO;
 import com.kernel.spring.dto.ClienteDTO;
 import com.kernel.spring.model.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class ClienteService {
     private static final Logger LOG = Logger.getLogger(ClienteService.class.getName());
 
     @Autowired
-    IClienteDAO IClienteDao;
+    com.kernel.spring.dao.IClienteDao IClienteDao;
 
     public List<ClienteDTO> obtenerClientes(){
         List<ClienteDTO> listCliente = IClienteDao.obtenerClientes();

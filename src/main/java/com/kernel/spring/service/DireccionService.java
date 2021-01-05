@@ -1,6 +1,5 @@
 package com.kernel.spring.service;
 
-import com.kernel.spring.dao.IDireccionDAO;
 import com.kernel.spring.dto.ClienteDirDTO;
 import com.kernel.spring.dto.ClienteFullDTO;
 import com.kernel.spring.model.Cliente;
@@ -22,7 +21,7 @@ public class DireccionService {
     private static final Logger LOG = Logger.getLogger(ClienteService.class.getName());
 
     @Autowired//inyeccion de dependencias de la interface IDireccion
-    IDireccionDAO IDireccionDao;
+    com.kernel.spring.dao.IDireccionDao IDireccionDao;
 
     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     Validator validator = factory.getValidator();

@@ -5,7 +5,7 @@ import com.kernel.spring.model.Cliente;
 
 import java.util.List;
 
-public interface IClienteDAO {
+public interface IClienteDao {
 
     List<ClienteDTO> obtenerClientes();
 

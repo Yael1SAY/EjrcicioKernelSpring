@@ -1,6 +1,6 @@
 package com.kernel.spring.dao.Imp;
 
-import com.kernel.spring.dao.IDireccionDAO;
+import com.kernel.spring.dao.IDireccionDao;
 import com.kernel.spring.dto.ClienteDirDTO;
 import com.kernel.spring.model.Direccion;
 import org.springframework.stereotype.Repository;
@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 @Transactional
 @Repository
-public class DireccionDaoImp implements IDireccionDAO {
+public class DireccionDaoImp implements IDireccionDao {
 
     private static final Logger LOG = Logger.getLogger(ClienteDaoImp.class.getName());
 
