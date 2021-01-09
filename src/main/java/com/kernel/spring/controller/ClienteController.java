@@ -37,6 +37,7 @@ public class ClienteController {
     //Registrar un usuario
     @RequestMapping(value = "/", method = RequestMethod.POST)
     Cliente registrarCliente(@RequestBody Cliente cliente){
+        LOG.info("Cliente a Registrar: " + cliente);
         return clienteService.registrarCliente(cliente);
     }
 

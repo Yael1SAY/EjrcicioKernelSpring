@@ -5,7 +5,7 @@ import lombok.Data;
 public @Data
 class ClienteFullDTO {
 
-    private String nombreCompleto;
+    private String datosCliente;
     private String direccion;
 
 }

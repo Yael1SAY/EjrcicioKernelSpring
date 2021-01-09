@@ -30,8 +30,10 @@ public class ClienteService {
     public ClienteDTO obtenerClienteId(long id){
         Cliente cliente = IClienteDao.obtenerClienteId(id);
         ClienteDTO clienteDto = new ClienteDTO();
+        clienteDto.setCorreo(cliente.getCorreo());
         clienteDto.setNombre(cliente.getNombre());
         clienteDto.setApellido(cliente.getApellido());
+        clienteDto.setEdad(cliente.getEdad());
         return clienteDto;
     }
 

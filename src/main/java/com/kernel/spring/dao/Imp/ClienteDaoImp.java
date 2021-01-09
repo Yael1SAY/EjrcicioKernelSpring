@@ -24,7 +24,7 @@ public class ClienteDaoImp implements IClienteDao {
     @Override
     public List<ClienteDTO> obtenerClientes() {
         //String hql = "From Cliente as c";
-        String hql = "Select NEW com.kernel.spring.dto.ClienteDTO(c.nombre, c.apellido) From Cliente as c";
+        String hql = "Select NEW com.kernel.spring.dto.ClienteDTO(c.correo, c.nombre, c.apellido, c.edad) From Cliente as c";
         List<ClienteDTO> listCliente = entityManager.createQuery(hql, ClienteDTO.class).getResultList();
         return listCliente;
     }

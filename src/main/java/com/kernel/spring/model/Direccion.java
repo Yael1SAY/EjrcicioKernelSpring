@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
+import java.io.Serializable;
 
 @Entity//indica que es una entidad
 @Table(name = "direcciones") //indicar el nombre de la tabla
@@ -24,19 +24,25 @@ public @Data class Direccion {
     @Column(name = "calle", nullable = false, length = 50)
     private String calle;
 
-    @NotEmpty(message = "No se permite campo vacio")
+    //@NotNull(message = "No se permite campo vacio")
     //@Size(min = 1, max = 8, message = "Minimo 1 caracter")
+    //@Pattern(regexp = ".*[0-9] +", message = "Solo se permiten digitos")
     @Column(name = "no_exterior", nullable = false, length = 8)
-    private int noExterior;
+    private Integer noExterior;
 
     //@NotBlank(message = "No se permite campo vacio")
     //@Size(min = 1, max = 8, message = "Minimo 1 caracter")
+    //@Pattern(regexp = ".*[0-9] +", message = "Solo se permiten digitos")
     @Column(name = "cod_postal", nullable = false, length = 8)
-    private int codPostal;
+    private Integer codPostal;
 
     @NotBlank(message = "No se permite campo ESTADO vacio")
-    @Column(name = "estado", nullable = false, length = 15)
+    @Column(name = "estado", nullable = false, length = 25)
     private String estado;
+
+    @NotBlank(message = "No se permite campo MUNICIPIO vacio")
+    @Column(name = "municipio", nullable = false, length = 20)
+    private String municipio;
 
     @NotBlank(message = "No se permite campo REFERENCIA vacio")
     @Column(name = "referencia", nullable = false, length = 250)
