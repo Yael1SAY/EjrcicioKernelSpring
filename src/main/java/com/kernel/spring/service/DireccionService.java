@@ -1,27 +1,15 @@
 package com.kernel.spring.service;
 
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.kernel.spring.dto.ClienteDirDTO;
-import com.kernel.spring.dto.ClienteFullDTO;
-import com.kernel.spring.model.Cliente;
 import com.kernel.spring.model.Direccion;
-import com.sun.xml.internal.ws.handler.HandlerException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver;
 
 import javax.persistence.NoResultException;
-import javax.validation.*;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.logging.Logger;
 
 @Service //indica que es un servicio
