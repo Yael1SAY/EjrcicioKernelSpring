@@ -13,9 +13,9 @@ import java.util.List;
 
 public interface IDireccionDao {
 
-    List<ClienteDirDTO> obtenerDirecciones();
+    List<Direccion> obtenerDirecciones();
 
-    ClienteDirDTO obtenerDireccionId(@PathVariable long id);
+    Direccion obtenerDireccionId(@PathVariable long id);
 
     Direccion registrarDireccion(@RequestBody Direccion direccion);
 

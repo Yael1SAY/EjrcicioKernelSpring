@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 @Service //indica que es un servicio
 public class DireccionService {
 
-    private static final Logger LOG = Logger.getLogger(ClienteService.class.getName());
+    private static final Logger LOG = Logger.getLogger(DireccionService.class.getName());
 
     @Autowired//inyeccion de dependencias de la interface IDireccion
     com.kernel.spring.dao.IDireccionDao IDireccionDao;
@@ -23,13 +23,13 @@ public class DireccionService {
     //ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     //Validator validator = factory.getValidator();
 
-    public List<ClienteDirDTO> obtenerDirecciones(){
+    public List<Direccion> obtenerDirecciones(){
         return IDireccionDao.obtenerDirecciones();
     }
 
-    public ClienteDirDTO obtenerDireccionId(long id) throws NoResultException {
+    public Direccion obtenerDireccionId(long id) {
         //ClienteFullDTO dto = new ClienteFullDTO();
-        ClienteDirDTO direccion = IDireccionDao.obtenerDireccionId(id);
+            return IDireccionDao.obtenerDireccionId(id);
             /*if(direccion != null) {
                 Cliente cliente = direccion.getCliente();
                 dto.setDatosCliente("Correo: " + cliente.getCorreo() + ", Nombre Completo: " + cliente.getNombre() +
@@ -41,7 +41,7 @@ public class DireccionService {
                 return dto;
             }*/
             //LOG.info("No existe cliente con id + " + id);
-        return direccion;
+
     }
 
     public Direccion registrarDireccion(Direccion direccion, BindingResult binding){

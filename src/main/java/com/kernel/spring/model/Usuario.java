@@ -27,6 +27,12 @@ public class Usuario implements Serializable {
     @Column
     private boolean estatus;
 
+    private String nombre;
+    private String apellido;
+
+    @Column(unique = true)
+    private String email;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name="usuario_id"),
             inverseJoinColumns = @JoinColumn(name = "rol_id"),

@@ -5,14 +5,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@Configuration
-public class SprigSecurityConfig extends WebSecurityConfigurerAdapter {
+//Configuracion prinicpal de Spring security
+@EnableGlobalMethodSecurity(securedEnabled = true)
+@Configuration//para que reconsoca
+public class SprigSecurityConfig extends WebSecurityConfigurerAdapter {//
 
     @Autowired
     private UserDetailsService usuarioService;
@@ -23,7 +26,7 @@ public class SprigSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    @Autowired
+    @Autowired//registra el servicio en la autenticacion Spring
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(this.usuarioService).passwordEncoder(passworEncoder());
     }

@@ -11,11 +11,16 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
+import java.util.Arrays;
+
+
+//Se encarga de realizar la autenticacion del usuario y genera el token de acceso
 @Configuration
-@EnableAuthorizationServer
+@EnableAuthorizationServer//habilita la configuracion
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired//se inyecta de la clase SpringSecurityConfig
@@ -25,13 +30,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Qualifier("authenticationManager")
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private InfoAdicionalToken infoAdicionalToken;
+
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()")//permite autenticar a cualquier usuario en la pagina de login
         .checkTokenAccess("isAuthenticated()");
     }
 
-    @Override
+    @Override//validacion para la aplicacion angular
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory().withClient("angularapp")
                 .secret(passwordEncoder.encode("12345"))
@@ -43,9 +51,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override//valida el token y se encarga del proceso de autenticacion
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+
+        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(infoAdicionalToken, accessTokenConverter()));
+
         endpoints.authenticationManager(authenticationManager)
                 .tokenStore(tokenStore())//invoca al metodo tokenStorage
-        .accessTokenConverter(accessTokenConverter());//componente que se encarga de traducir datos de autenticacion como nombre, roles, username , email etc
+        .accessTokenConverter(accessTokenConverter())//componente que se encarga de traducir datos de autenticacion como nombre, roles, username , email etc
+        .tokenEnhancer(tokenEnhancerChain);
         super.configure(endpoints);
     }
 
@@ -57,7 +70,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-        jwtAccessTokenConverter.setSigningKey(JwtConfig.LLAVE_SECRETA);
+        jwtAccessTokenConverter.setSigningKey(JwtConfig.RSA_PRIVADA);//Para firmar el token
+        jwtAccessTokenConverter.setVerifierKey(JwtConfig.RSA_PUBLICA);//Verifica que el token sea valido
         //con esta llave secrea el token en el servidor de authorizacion
         return jwtAccessTokenConverter;//Traduce toda la informacion para la autentificacion
     }

@@ -24,7 +24,7 @@ public @Data class Cliente implements Serializable{ //@Data agrega getter, sette
     @Column(name = "correo", nullable = false, length = 50, unique = true)
     private String correo;
 
-    @Pattern(regexp = ".*[a-zA-Z]", message = "Solo se permiten Letras")
+    @Pattern(regexp = ".*[a-zA-Z]", message = "Solo se permiten Letras en campo Nombre")
     @NotBlank(message = "No se permiten campos NOMBRE vacios")
     @Column(name = "nombre", nullable = false, length = 30)
     private String nombre;
@@ -38,9 +38,9 @@ public @Data class Cliente implements Serializable{ //@Data agrega getter, sette
     @Column(name = "edad", nullable = false, length = 3)
     private int edad;
 
-    @NotBlank(message = "No se permiten campos CONTRASEÑA vacios")
-    @Size(min = 4, max = 12, message = "Minimo 4 caracteres para la contraseña")
-    @Column(name = "contrasenia", nullable = false, length = 12)
+    //@NotBlank(message = "No se permiten campos CONTRASEÑA vacios")
+    //@Size(min = 4, max = 12, message = "Minimo 4 caracteres para la contraseña")
+    @Column(name = "contrasenia", length = 12)
     private String contrasenia;
 
 }
