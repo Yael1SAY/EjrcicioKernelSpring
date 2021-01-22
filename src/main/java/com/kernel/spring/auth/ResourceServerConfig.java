@@ -26,14 +26,17 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 //Se otorgan los permisos a las rutas
     @Override
     public void configure(HttpSecurity http) throws Exception {//se otorga todos los permisos a esta ruta
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/direccion/").permitAll()
-        //.antMatchers(HttpMethod.GET, "/direccion/{id}").permitAll()//.hasAnyRole("USER", "ADMIN")//Automaticamente reconoce ROL_USER Y ROLE_ADMIN
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/direccion/").authenticated()
+        //.antMatchers(HttpMethod.GET, "/direccion/municipio/{codigoPostal}").permitAll()//.hasAnyRole("USER", "ADMIN")//Automaticamente reconoce ROL_USER Y ROLE_ADMIN
+        //.antMatchers(HttpMethod.PUT, "/direccion/delete/{id}").permitAll()
         //.antMatchers(HttpMethod.POST, "/direccion/").permitAll()//.hasRole("ADMIN")
         //.antMatchers("/direccion/**").permitAll()//.hasRole("ADMIN")
         //.anyRequest().authenticated()
         //permite acceder a la ruta de la api a usuarios autenticados
         .and().cors().configurationSource(corsConfigurationSource());
     }
+
+
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
@@ -44,6 +47,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         configuration.setAllowedHeaders(Arrays.asList("Content-type","Authorization"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration("/delete/{id}",configuration);
         return source;
     }
 

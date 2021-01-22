@@ -35,8 +35,8 @@ public class UsuarioService implements UserDetailsService, IUsuarioService {
 
         //valida si el usuario existe
         if (usuario == null){//se implementa log por si el usuario no existe
-            logger.error("Error en el Login: no existe el usuario: " + usuario + "en el sistema");
-            throw new UsernameNotFoundException("Error en el Login: no existe el usuario: " + usuario + "en el sistema");
+            logger.error("Error en el Login: no existe el usuario: " + nombreUsuario + " en el sistema");
+            throw new UsernameNotFoundException("Error en el Login: no existe el usuario: " + nombreUsuario + " en el sistema");
         }
 
         //Se obtiene los roles del usuario
@@ -47,7 +47,7 @@ public class UsuarioService implements UserDetailsService, IUsuarioService {
                 .collect(Collectors.toList());//Transforma a un tipo list
 
         //retorna los datos del usuario
-        return new User(usuario.getNombreUsuario(),usuario.getPassword(), usuario.isEstatus(), true, true, true, authorities);
+        return new User(usuario.getUsername(),usuario.getPassword(), usuario.isEstatus(), true, true, true, authorities);
     }
 
     @Override

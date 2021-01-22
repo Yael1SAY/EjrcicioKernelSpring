@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 @Repository//Para trabajar con CRUD Repository
 public interface IUsuarioDao extends CrudRepository<Usuario, Long> {
 
-    //public Usuario findByUsername(String nombreUsuario);
+    //public Usuario2 findByUsername(String nombreUsuario);
 
-    @Query("select u from Usuario u where u.nombreUsuario = ?1")//consulta hql
-    public Usuario findByUsername2(String nombreUsuario);//para buscar el usuario
+    @Query("select u from Usuario u where u.username = ?1")//consulta hql
+    public Usuario findByUsername2(String username);//para buscar el usuario
 }

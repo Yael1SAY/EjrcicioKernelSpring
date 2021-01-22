@@ -1,7 +1,7 @@
 package com.kernel.spring.controller;
 
 import com.kernel.spring.dto.ClienteDTO;
-import com.kernel.spring.model.Cliente;
+import com.kernel.spring.model.Usuario;
 import com.kernel.spring.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,18 +36,18 @@ public class ClienteController {
 
     //Registrar un usuario
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    Cliente registrarCliente(@RequestBody Cliente cliente){
-        LOG.info("Cliente a Registrar: " + cliente);
-        return clienteService.registrarCliente(cliente);
+    Usuario registrarCliente(@RequestBody Usuario usuario){
+        LOG.info("Usuario a Registrar: " + usuario);
+        return clienteService.registrarCliente(usuario);
     }
 
-    //Actualizar un Cliente
+    //Actualizar un Usuario
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    Cliente actualizarCliente(@RequestBody Cliente cliente){
-        return clienteService.actualizarCliente(cliente);
+    Usuario actualizarCliente(@RequestBody Usuario usuario){
+        return clienteService.actualizarCliente(usuario);
     }
 
-    //Eliminar un Cliente
+    //Eliminar un Usuario
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     void eliminarCliente(@PathVariable long id){
         clienteService.eliminarCliente(id);

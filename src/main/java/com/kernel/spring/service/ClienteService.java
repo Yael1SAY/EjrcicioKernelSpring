@@ -2,7 +2,7 @@
 package com.kernel.spring.service;
 
 import com.kernel.spring.dto.ClienteDTO;
-import com.kernel.spring.model.Cliente;
+import com.kernel.spring.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,21 +28,21 @@ public class ClienteService {
     }
 
     public ClienteDTO obtenerClienteId(long id){
-        Cliente cliente = IClienteDao.obtenerClienteId(id);
+        Usuario usuario = IClienteDao.obtenerClienteId(id);
         ClienteDTO clienteDto = new ClienteDTO();
-        clienteDto.setCorreo(cliente.getCorreo());
-        clienteDto.setNombre(cliente.getNombre());
-        clienteDto.setApellido(cliente.getApellido());
-        clienteDto.setEdad(cliente.getEdad());
+        clienteDto.setCorreo(usuario.getEmail());
+        clienteDto.setNombre(usuario.getNombre());
+        clienteDto.setApellido(usuario.getApellido());
+        clienteDto.setEdad(usuario.getEdad());
         return clienteDto;
     }
 
-    public Cliente registrarCliente(Cliente cliente){
-        return IClienteDao.registrarCliente(cliente);
+    public Usuario registrarCliente(Usuario usuario){
+        return IClienteDao.registrarCliente(usuario);
     }
 
-    public Cliente actualizarCliente(Cliente cliente){
-        return IClienteDao.actualizarCliente(cliente);
+    public Usuario actualizarCliente(Usuario usuario){
+        return IClienteDao.actualizarCliente(usuario);
     }
 
     public void eliminarCliente(long id){

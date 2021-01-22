@@ -1,7 +1,7 @@
 package com.kernel.spring.dao;
 
 import com.kernel.spring.dto.ClienteDTO;
-import com.kernel.spring.model.Cliente;
+import com.kernel.spring.model.Usuario;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ public interface IClienteDao {
 
     List<ClienteDTO> obtenerClientes();
 
-    Cliente obtenerClienteId(long id);
+    Usuario obtenerClienteId(long id);
 
-    Cliente registrarCliente(Cliente cliente);
+    Usuario registrarCliente(Usuario usuario);
 
-    Cliente actualizarCliente(Cliente cliente);
+    Usuario actualizarCliente(Usuario usuario);
 
     void eliminarCliente(long id);
 
